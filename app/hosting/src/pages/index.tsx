@@ -1,7 +1,11 @@
 const Index = () => {
+
+    const count: number = 1
+
     return (
         <>
-            Hello World
+            <div>Hello World</div>
+            <div>{count}</div>
         </>
     )
 }
