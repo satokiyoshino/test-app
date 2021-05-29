@@ -1,0 +1,13 @@
+version: '3'
+services:
+  test-app:
+    build: .
+    tty: true
+    volumes:
+      - ./app:/usr/src/app
+    # command: ["npm", "run", "serve"]
+    # ports:
+    #   - 3000:3000
+    #   - 4000:4000
+    #   - 5000:5000
+    #   - 5001:5001
