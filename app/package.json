@@ -2,14 +2,17 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "functions/lib/index.js",
   "scripts": {
     "dev": "cd hosting && next",
-    "build": "cd hosting && next build",
-    "start": "cd hosting && next start",
-    "export": "cd hosting && next export",
-    "check-hosting": "cd hosting && npx tsc",
-    "serve": "npx firebase emulators:start --only hosting"
+    "build-hosting": "next build",
+    "build-functions": "cd functions && npx tsc",
+    "build": "npm run build-hosting && npm run build-functions",
+    "start": "next start",
+    "export": "next export",
+    "check-hosting": "npx tsc",
+    "serve": "npm run build && npx firebase emulators:start --only hosting,functions",
+    "deploy": "npx firebase deploy --only functions,hosting"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
