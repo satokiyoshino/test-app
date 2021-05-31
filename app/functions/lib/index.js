@@ -28,5 +28,8 @@ const next_1 = __importDefault(require("next"));
 const nextApp = next_1.default({ dev: false });
 const handle = nextApp.getRequestHandler();
 exports.main = functions.https.onRequest(async (req, res) => {
-    nextApp.prepare().then(() => handle(req, res));
+    console.log('####### REQ #######');
+    console.log(req.path);
+    await nextApp.prepare();
+    handle(req, res);
 });

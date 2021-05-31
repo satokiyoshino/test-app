@@ -7,6 +7,9 @@ const handle = nextApp.getRequestHandler()
 
 
 export const main =
-functions.https.onRequest(async (req, res) => {
-    nextApp.prepare().then(() => handle(req, res))
-})
+    functions.https.onRequest(async (req, res) => {
+        console.log('####### REQ #######')
+        console.log(req)
+        await nextApp.prepare()
+        handle(req, res)
+    })
