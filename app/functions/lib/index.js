@@ -25,11 +25,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.main = void 0;
 const functions = __importStar(require("firebase-functions"));
 const next_1 = __importDefault(require("next"));
+const express_1 = __importDefault(require("express"));
+const api_1 = require("./api");
 const nextApp = next_1.default({ dev: false });
 const handle = nextApp.getRequestHandler();
 exports.main = functions.https.onRequest(async (req, res) => {
-    console.log('####### REQ #######');
-    console.log(req.path);
-    await nextApp.prepare();
-    handle(req, res);
+    const app = express_1.default();
+    app.use('/api', api_1.router);
+    app.get('*', async (req, res) => {
+        await nextApp.prepare();
+        handle(req, res);
+    });
+    app(req, res);
 });

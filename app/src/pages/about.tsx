@@ -3,16 +3,10 @@ import { GetServerSideProps } from 'next'
 
 
 const About = (props: any) => {
-
-    const count: number = 1
-
     return (
         <>
-            {console.log("############")}
-            {console.log(props)}
             <div>ABOUT PAGE</div>
-            <div>{count}</div>
-            <div>{props.name}</div>
+            <div>このブロックはSSRされています「{props.name}」</div>
             <Link href='/'><a>GOTO TOP</a></Link>
         </>
     )
